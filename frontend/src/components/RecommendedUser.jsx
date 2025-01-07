@@ -62,7 +62,7 @@ const RecommendedUser = ({ user }) => {
 						disabled
 					>
 						<Clock size={16} className='mr-1' />
-						Pending
+						Menunggu
 					</button>
 				);
 			case "received":
@@ -89,7 +89,7 @@ const RecommendedUser = ({ user }) => {
 						disabled
 					>
 						<UserCheck size={16} className='mr-1' />
-						Connected
+						Terkoneksi
 					</button>
 				);
 			default:

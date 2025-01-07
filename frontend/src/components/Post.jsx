@@ -106,7 +106,7 @@ const Post = ({ post }) => {
 							</Link>
 							<p className='text-xs text-info'>{post.author.headline}</p>
 							<p className='text-xs text-info'>
-								{formatDistanceToNow(new Date(post.createdAt), { addSuffix: true })}
+								{formatDistanceToNow(new Date(post.createdAt), { addSuffix: true, locale: id})}
 							</p>
 						</div>
 					</div>
@@ -149,7 +149,7 @@ const Post = ({ post }) => {
 									<div className='flex items-center mb-1'>
 										<span className='font-semibold mr-2'>{comment.user.name}</span>
 										<span className='text-xs text-info'>
-											{formatDistanceToNow(new Date(comment.createdAt))}
+											{formatDistanceToNow(new Date(comment.createdAt),{ addSuffix: true, locale: id})}
 										</span>
 									</div>
 									<p>{comment.content}</p>

@@ -34,7 +34,7 @@ const EducationSection = ({ userData, isOwnProfile, onSave }) => {
 
 	return (
 		<div className='bg-white shadow rounded-lg p-6 mb-6'>
-			<h2 className='text-xl font-semibold mb-4'>Education</h2>
+			<h2 className='text-xl font-semibold mb-4'>Pendidikan</h2>
 			{educations.map((edu) => (
 				<div key={edu._id} className='mb-4 flex justify-between items-start'>
 					<div className='flex items-start'>
@@ -58,28 +58,28 @@ const EducationSection = ({ userData, isOwnProfile, onSave }) => {
 				<div className='mt-4'>
 					<input
 						type='text'
-						placeholder='School'
+						placeholder='Instansi Pendidikan'
 						value={newEducation.school}
 						onChange={(e) => setNewEducation({ ...newEducation, school: e.target.value })}
 						className='w-full p-2 border rounded mb-2'
 					/>
 					<input
 						type='text'
-						placeholder='Field of Study'
+						placeholder='Bidang Studi'
 						value={newEducation.fieldOfStudy}
 						onChange={(e) => setNewEducation({ ...newEducation, fieldOfStudy: e.target.value })}
 						className='w-full p-2 border rounded mb-2'
 					/>
 					<input
 						type='number'
-						placeholder='Start Year'
+						placeholder='Tahun Mulai'
 						value={newEducation.startYear}
 						onChange={(e) => setNewEducation({ ...newEducation, startYear: e.target.value })}
 						className='w-full p-2 border rounded mb-2'
 					/>
 					<input
 						type='number'
-						placeholder='End Year'
+						placeholder='Tahun Selesai'
 						value={newEducation.endYear}
 						onChange={(e) => setNewEducation({ ...newEducation, endYear: e.target.value })}
 						className='w-full p-2 border rounded mb-2'
@@ -88,7 +88,7 @@ const EducationSection = ({ userData, isOwnProfile, onSave }) => {
 						onClick={handleAddEducation}
 						className='bg-primary text-white py-2 px-4 rounded hover:bg-primary-dark transition duration-300'
 					>
-						Add Education
+						Tambah Pendidikan
 					</button>
 				</div>
 			)}
@@ -101,14 +101,14 @@ const EducationSection = ({ userData, isOwnProfile, onSave }) => {
 							className='mt-4 bg-primary text-white py-2 px-4 rounded hover:bg-primary-dark
 							 transition duration-300'
 						>
-							Save Changes
+							Simpan Perubahan
 						</button>
 					) : (
 						<button
 							onClick={() => setIsEditing(true)}
 							className='mt-4 text-primary hover:text-primary-dark transition duration-300'
 						>
-							Edit Education
+							Ubah Pendidikan
 						</button>
 					)}
 				</>

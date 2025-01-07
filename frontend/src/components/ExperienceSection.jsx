@@ -48,7 +48,7 @@ const ExperienceSection = ({ userData, isOwnProfile, onSave }) => {
 
 	return (
 		<div className='bg-white shadow rounded-lg p-6 mb-6'>
-			<h2 className='text-xl font-semibold mb-4'>Experience</h2>
+			<h2 className='text-xl font-semibold mb-4'>Pengalaman</h2>
 			{experiences.map((exp) => (
 				<div key={exp._id} className='mb-4 flex justify-between items-start'>
 					<div className='flex items-start'>
@@ -74,14 +74,14 @@ const ExperienceSection = ({ userData, isOwnProfile, onSave }) => {
 				<div className='mt-4'>
 					<input
 						type='text'
-						placeholder='Title'
+						placeholder='Posisi'
 						value={newExperience.title}
 						onChange={(e) => setNewExperience({ ...newExperience, title: e.target.value })}
 						className='w-full p-2 border rounded mb-2'
 					/>
 					<input
 						type='text'
-						placeholder='Company'
+						placeholder='Perusahaan'
 						value={newExperience.company}
 						onChange={(e) => setNewExperience({ ...newExperience, company: e.target.value })}
 						className='w-full p-2 border rounded mb-2'
@@ -101,7 +101,7 @@ const ExperienceSection = ({ userData, isOwnProfile, onSave }) => {
 							onChange={handleCurrentlyWorkingChange}
 							className='mr-2'
 						/>
-						<label htmlFor='currentlyWorking'>I currently work here</label>
+						<label htmlFor='currentlyWorking'>Saat ini saya bekerja di sini </label>
 					</div>
 					{!newExperience.currentlyWorking && (
 						<input
@@ -113,7 +113,7 @@ const ExperienceSection = ({ userData, isOwnProfile, onSave }) => {
 						/>
 					)}
 					<textarea
-						placeholder='Description'
+						placeholder='Deskripsi'
 						value={newExperience.description}
 						onChange={(e) => setNewExperience({ ...newExperience, description: e.target.value })}
 						className='w-full p-2 border rounded mb-2'
@@ -122,7 +122,7 @@ const ExperienceSection = ({ userData, isOwnProfile, onSave }) => {
 						onClick={handleAddExperience}
 						className='bg-primary text-white py-2 px-4 rounded hover:bg-primary-dark transition duration-300'
 					>
-						Add Experience
+						Tambah Pengalaman
 					</button>
 				</div>
 			)}
@@ -134,14 +134,14 @@ const ExperienceSection = ({ userData, isOwnProfile, onSave }) => {
 							onClick={handleSave}
 							className='mt-4 bg-primary text-white py-2 px-4 rounded hover:bg-primary-dark transition duration-300'
 						>
-							Save Changes
+							Simpan Perubahan
 						</button>
 					) : (
 						<button
 							onClick={() => setIsEditing(true)}
 							className='mt-4 text-primary hover:text-primary-dark transition duration-300'
 						>
-							Edit Experiences
+							Ubah Perubahan
 						</button>
 					)}
 				</>

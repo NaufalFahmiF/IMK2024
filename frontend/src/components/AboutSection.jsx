@@ -10,7 +10,7 @@ const AboutSection = ({ userData, isOwnProfile, onSave }) => {
 	};
 	return (
 		<div className='bg-white shadow rounded-lg p-6 mb-6'>
-			<h2 className='text-xl font-semibold mb-4'>About</h2>
+			<h2 className='text-xl font-semibold mb-4'>Tentang</h2>
 			{isOwnProfile && (
 				<>
 					{isEditing ? (
@@ -26,7 +26,7 @@ const AboutSection = ({ userData, isOwnProfile, onSave }) => {
 								className='mt-2 bg-primary text-white py-2 px-4 rounded hover:bg-primary-dark 
 								transition duration-300'
 							>
-								Save
+								Simpan
 							</button>
 						</>
 					) : (
@@ -36,7 +36,7 @@ const AboutSection = ({ userData, isOwnProfile, onSave }) => {
 								onClick={() => setIsEditing(true)}
 								className='mt-2 text-primary hover:text-primary-dark transition duration-300'
 							>
-								Edit
+								Ubah
 							</button>
 						</>
 					)}

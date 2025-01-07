@@ -45,7 +45,7 @@ const SkillsSection = ({ userData, isOwnProfile, onSave }) => {
 				<div className='mt-4 flex'>
 					<input
 						type='text'
-						placeholder='New Skill'
+						placeholder='Tambahkan Skill baru'
 						value={newSkill}
 						onChange={(e) => setNewSkill(e.target.value)}
 						className='flex-grow p-2 border rounded-l'
@@ -54,7 +54,7 @@ const SkillsSection = ({ userData, isOwnProfile, onSave }) => {
 						onClick={handleAddSkill}
 						className='bg-primary text-white py-2 px-4 rounded-r hover:bg-primary-dark transition duration-300'
 					>
-						Add Skill
+						Tambahkan skill
 					</button>
 				</div>
 			)}
@@ -66,14 +66,14 @@ const SkillsSection = ({ userData, isOwnProfile, onSave }) => {
 							onClick={handleSave}
 							className='mt-4 bg-primary text-white py-2 px-4 rounded hover:bg-primary-dark transition duration-300'
 						>
-							Save Changes
+							Simpan Perubahan
 						</button>
 					) : (
 						<button
 							onClick={() => setIsEditing(true)}
 							className='mt-4 text-primary hover:text-primary-dark transition duration-300'
 						>
-							Edit Skills
+							Ubah Skill
 						</button>
 					)}
 				</>

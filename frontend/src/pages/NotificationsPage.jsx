@@ -59,7 +59,7 @@ const NotificationsPage = () => {
 						<Link to={`/profile/${notification.relatedUser.username}`} className='font-bold'>
 							{notification.relatedUser.name}
 						</Link>{" "}
-						commented on your post
+						mengomentari postingan Anda
 					</span>
 				);
 			case "connectionAccepted":
@@ -68,7 +68,7 @@ const NotificationsPage = () => {
 						<Link to={`/profile/${notification.relatedUser.username}`} className='font-bold'>
 							{notification.relatedUser.name}
 						</Link>{" "}
-						accepted your connection request
+						menerima permintaan koneksi Anda
 					</span>
 				);
 			default:
@@ -102,7 +102,7 @@ const NotificationsPage = () => {
 			</div>
 			<div className='col-span-1 lg:col-span-3'>
 				<div className='bg-white rounded-lg shadow p-6'>
-					<h1 className='text-2xl font-bold mb-6'>Notifications</h1>
+					<h1 className='text-2xl font-bold mb-6'>Notifikasi</h1>
 
 					{isLoading ? (
 						<p>Loading notifications...</p>
@@ -165,7 +165,7 @@ const NotificationsPage = () => {
 							))}
 						</ul>
 					) : (
-						<p>No notification at the moment.</p>
+						<p>Tidak ada notifikasi saat ini.</p>
 					)}
 				</div>
 			</div>

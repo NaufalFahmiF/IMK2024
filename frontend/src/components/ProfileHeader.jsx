@@ -237,7 +237,7 @@ const ProfileHeader = ({ userData, onSave, isOwnProfile }) => {
 							 transition duration-300'
 							onClick={handleSave}
 						>
-							Save Profile
+							Simpan Profil
 						</button>
 					) : (
 						<button
@@ -245,7 +245,7 @@ const ProfileHeader = ({ userData, onSave, isOwnProfile }) => {
 							className='w-full bg-primary text-white py-2 px-4 rounded-full hover:bg-primary-dark
 							 transition duration-300'
 						>
-							Edit Profile
+							Ubah Profil
 						</button>
 					)
 				) : (
