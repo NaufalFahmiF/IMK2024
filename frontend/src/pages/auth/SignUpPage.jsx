@@ -3,10 +3,10 @@ import SignUpForm from "../../components/auth/SignUpForm";
 
 const SignInPage = () => {
     return (
-        <div className="flex items-center justify-center min-h-screen bg-gray-100">
-            <div className="relative flex flex-col  min-h-[650px] m-6 space-y-8 bg-white shadow-2xl rounded-2xl md:flex-row md:space-y-0 md:rounded-2xl">
+        <div className="flex flex-col md:flex-row items-center justify-center min-h-screen bg-gray-100">
+            <div className="relative flex flex-col  min-h-[650px] m-6 space-y-8 bg-white shadow-2xl rounded-2xl md:flex-row md:space-y-0 md:rounded-2xl max-w-[1050px]">
                 {/* Bagian kiri dengan gradient dan logo */}
-                <div className="flex items-center justify-center bg-gradient-to-br from-purple-600 via-orange-400 to-yellow-300 rounded-l-2xl rounded-r-2xl p-8 md:w-[400px]">
+                <div className="flex items-center justify-center bg-gradient-to-br from-purple-600 via-orange-400 to-yellow-300 rounded-l-2xl rounded-r-2xl p-8 md:w-[750px]">
                     <div className="text-left text-white ml-5">
                         <p className="font-syne text-3xl font-semibold mb-6">
                             Tanyakan apa saja yang ingin kamu ketahui
@@ -26,9 +26,9 @@ const SignInPage = () => {
                         alt="Logo Universitas"
                         className="absolute top-4 right-4 w-14 h-14"
                     />
-                    <span className="mb-3 text-4xl font-bold">Masuk</span>
+                    <span className="mb-3 text-4xl font-bold">Aktivasi</span>
                     <span className="font-light text-gray-500 mb-8">
-                        Masuk dengan akun StudentSite
+                        Aktivasi Menggunakan StudentSite
                     </span>
                     <SignUpForm />
                     <Link to='/signin' className="text-[#B369B5] text-center font-bold w-full border-none text-md p-2 mb-6 hover:text-[#8a528d] underline transition-all ease-in duration-300">
