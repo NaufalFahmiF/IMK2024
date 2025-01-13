@@ -1,40 +1,43 @@
 import { Link } from "react-router-dom";
 import SignUpForm from "../../components/auth/SignUpForm";
 
-const SignUpPage = () => {
-	return (
-		<div className='min-h-screen flex flex-col justify-center py-12 sm:px-6 lg:px-8'>
-			<div className='sm:mx-auto sm:w-full sm:max-w-md'>
-				<img className='mx-auto h-36 w-auto mb-4' src='/ugcorner.png' />
-				<h2 className='text-center text-3xl font-extrabold text-gray-900'>
-					Tanyakan Apa Saja Yang Ingin Kamu ketahui
-				</h2>
-			</div>
-			<div className='mt-8 sm:mx-auto sm:w-full sm:max-w-md shadow-md'>
-				<div className='bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10'>
-					<SignUpForm />
+const SignInPage = () => {
+    return (
+        <div className="flex items-center justify-center min-h-screen bg-gray-100">
+            <div className="relative flex flex-col  min-h-[650px] m-6 space-y-8 bg-white shadow-2xl rounded-2xl md:flex-row md:space-y-0 md:rounded-2xl">
+                {/* Bagian kiri dengan gradient dan logo */}
+                <div className="flex items-center justify-center bg-gradient-to-br from-purple-600 via-orange-400 to-yellow-300 rounded-l-2xl rounded-r-2xl p-8 md:w-[400px]">
+                    <div className="text-left text-white ml-5">
+                        <p className="font-syne text-3xl font-semibold mb-6">
+                            Tanyakan apa saja yang ingin kamu ketahui
+                        </p>
+                        <img 
+                            src="/logo-gunadarma.svg" 
+                            alt="Logo Universitas" 
+                            className="w-full max-w-[400px] h-auto mx-auto mb-6"
+                        />
+                    </div>
+                </div>
 
-					<div className='mt-6'>
-						<div className='relative'>
-							<div className='absolute inset-0 flex items-center'>
-								<div className='w-full border-t border-gray-300'></div>
-							</div>
-							<div className='relative flex justify-center text-sm'>
-								<span className='px-2 bg-white text-gray-500'>Sudah Aktivasi?</span>
-							</div>
-						</div>
-						<div className='mt-6'>
-							<Link
-								to='/login'
-								className='w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-blue-600 bg-white hover:bg-gray-50'
-							>
-								Masuk
-							</Link>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	);
+                {/* Bagian kanan untuk form */}
+                <div className="flex flex-col justify-center p-10 md:p-14">
+                    <img
+                        src="/ugcorner-sq.png"
+                        alt="Logo Universitas"
+                        className="absolute top-4 right-4 w-14 h-14"
+                    />
+                    <span className="mb-3 text-4xl font-bold">Masuk</span>
+                    <span className="font-light text-gray-500 mb-8">
+                        Masuk dengan akun StudentSite
+                    </span>
+                    <SignUpForm />
+                    <Link to='/signin' className="text-[#B369B5] text-center font-bold w-full border-none text-md p-2 mb-6 hover:text-[#8a528d] underline transition-all ease-in duration-300">
+                        Masuk
+                    </Link>
+                </div>
+            </div>
+        </div>
+    );
 };
-export default SignUpPage;
+
+export default SignInPage;
