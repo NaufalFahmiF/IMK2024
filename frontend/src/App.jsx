@@ -3,6 +3,7 @@ import Layout from "./components/layout/Layout";
 
 import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/auth/LoginPage";
+import SignInPage from "./pages/auth/SignInPage";
 import SignUpPage from "./pages/auth/SignUpPage";
 import toast, { Toaster } from "react-hot-toast";
 import { useQuery } from "@tanstack/react-query";
@@ -31,18 +32,24 @@ function App() {
 	if (isLoading) return null;
 
 	return (
-		<Layout>
+		<>
 			<Routes>
-				<Route path='/' element={authUser ? <HomePage /> : <Navigate to={"/login"} />} />
-				<Route path='/signup' element={!authUser ? <SignUpPage /> : <Navigate to={"/"} />} />
-				<Route path='/login' element={!authUser ? <LoginPage /> : <Navigate to={"/"} />} />
-				<Route path='/notifications' element={authUser ? <NotificationsPage /> : <Navigate to={"/login"} />} />
-				<Route path='/network' element={authUser ? <NetworkPage /> : <Navigate to={"/login"} />} />
-				<Route path='/post/:postId' element={authUser ? <PostPage /> : <Navigate to={"/login"} />} />
-				<Route path='/profile/:username' element={authUser ? <ProfilePage /> : <Navigate to={"/login"} />} />
+				{/* Rute tanpa layout */}
+				<Route path='/signin' element={!authUser ? <SignInPage /> : <Navigate to={"/"} />} />
+
+				{/* Rute dengan layout */}
+				<Route element={<Layout />}>
+					<Route path='/login' element={!authUser ? <LoginPage /> : <Navigate to={"/"} />} />
+					<Route path='/signup' element={!authUser ? <SignUpPage /> : <Navigate to={"/"} />} />
+					<Route path='/' element={authUser ? <HomePage /> : <Navigate to={"/login"} />} />
+					<Route path='/notifications' element={authUser ? <NotificationsPage /> : <Navigate to={"/login"} />} />
+					<Route path='/network' element={authUser ? <NetworkPage /> : <Navigate to={"/login"} />} />
+					<Route path='/post/:postId' element={authUser ? <PostPage /> : <Navigate to={"/login"} />} />
+					<Route path='/profile/:username' element={authUser ? <ProfilePage /> : <Navigate to={"/login"} />} />
+				</Route>
 			</Routes>
 			<Toaster />
-		</Layout>
+		</>
 	);
 }
 
