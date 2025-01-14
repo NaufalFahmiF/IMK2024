@@ -27,7 +27,7 @@ const Post = ({ post }) => {
 		},
 		onSuccess: () => {
 			queryClient.invalidateQueries({ queryKey: ["posts"] });
-			toast.success("Post deleted successfully");
+			toast.success("Postingan berhasil dihapus");
 		},
 		onError: (error) => {
 			toast.error(error.message);
@@ -40,7 +40,7 @@ const Post = ({ post }) => {
 		},
 		onSuccess: () => {
 			queryClient.invalidateQueries({ queryKey: ["posts"] });
-			toast.success("Comment added successfully");
+			toast.success("Komentar berhasil ditambahkan");
 		},
 		onError: (err) => {
 			toast.error(err.response.data.message || "Failed to add comment");
@@ -121,14 +121,26 @@ const Post = ({ post }) => {
 
 				<div className='flex justify-between text-info'>
 					<PostAction
-						icon={<ThumbsUp size={18} className={isLiked ? "text-blue-500  fill-blue-300" : ""} />}
-						text={`Suka (${post.likes.length})`}
+						icon={<ThumbsUp size={18} className={`${
+							isLiked ? "fill-[#763996]" : ""
+						} hover:stroke-[#763996] transition-colors`} />}
+						text={
+							<span 
+							className={isLiked ? "text-[#763996] transition-colors" : ""}
+							>{`Suka (${post.likes.length})`}</span> 
+						}
 						onClick={handleLikePost}
 					/>
 
 					<PostAction
-						icon={<MessageCircle size={18} />}
-						text={`Komentar (${comments.length})`}
+						icon={<MessageCircle size={18} className={`${
+							showComments ? "fill-[#763996]" : ""
+						} hover:stroke-[#763996] transition-colors`} />}
+						text={
+							<span
+								className={showComments ? "text-[#763996] transition-colors" : ""}
+							>{`Komentar (${comments.length})`}</span>
+						}
 						onClick={() => setShowComments(!showComments)}
 					/>
 					<PostAction icon={<Share2 size={18} />} text='Bagikan' />
@@ -158,18 +170,18 @@ const Post = ({ post }) => {
 						))}
 					</div>
 
-					<form onSubmit={handleAddComment} className='flex items-center'>
+					<form onSubmit={handleAddComment} className='flex items-center h-10'>
 						<input
 							type='text'
 							value={newComment}
 							onChange={(e) => setNewComment(e.target.value)}
 							placeholder='Berikan komentar anda...'
-							className='flex-grow p-2 rounded-l-full bg-base-100 focus:outline-none focus:ring-2 focus:ring-primary'
+							className='flex-grow h-full pl-4 p-2 rounded-l-full bg-base-100 focus:outline-none focus:ring-2 focus:ring-primary'
 						/>
 
 						<button
 							type='submit'
-							className='bg-primary text-white p-2 rounded-r-full hover:bg-primary-dark transition duration-300'
+							className='bg-primary h-full text-white p-2 rounded-r-full hover:bg-primary-dark transition duration-300'
 							disabled={isAddingComment}
 						>
 							{isAddingComment ? <Loader size={18} className='animate-spin' /> : <Send size={18} />}

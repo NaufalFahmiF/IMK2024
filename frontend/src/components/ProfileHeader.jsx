@@ -82,7 +82,7 @@ const ProfileHeader = ({ userData, onSave, isOwnProfile }) => {
 					<div className='flex gap-2 justify-center'>
 						<div className={`${baseClass} bg-green-500 hover:bg-green-600`}>
 							<UserCheck size={20} className='mr-2' />
-							Connected
+							Terhubung
 						</div>
 						<button
 							className={`${baseClass} bg-red-500 hover:bg-red-600 text-sm`}

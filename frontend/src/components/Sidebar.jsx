@@ -20,7 +20,7 @@ export default function Sidebar({ user }) {
 					<h2 className='text-xl font-semibold mt-2'>{user.name}</h2>
 				</Link>
 				<p className='text-info'>{user.headline}</p>
-				<p className='text-info text-xs'>{user.connections.length} connections</p>
+				<p className='text-info text-xs'>{user.connections.length} Koneksi</p>
 			</div>
 			<div className='border-t border-base-100 p-4'>
 				<nav>
@@ -53,7 +53,7 @@ export default function Sidebar({ user }) {
 				</nav>
 			</div>
 			<div className='border-t border-base-100 p-4'>
-				<Link to={`/profile/${user.username}`} className='text-sm font-semibold'>
+				<Link to={`/profile/${user.username}`} className='px-4 text-sm font-semibold hover:text-[#763996] transition-colors'>
 					Profil Saya
 				</Link>
 			</div>
