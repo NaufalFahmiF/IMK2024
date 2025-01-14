@@ -37,13 +37,13 @@ function App() {
 			path="/signup"
 			element={!authUser ? <SignUpPage /> : <Navigate to={"/"} />}
 		  />
-  
-		  {/* Rute dengan layout */}
-		  <Route element={<Layout />}>
 		  <Route
 			path="/signin"
 			element={!authUser ? <SignInPage /> : <Navigate to={"/"} />}
 		  />
+  
+		  {/* Rute dengan layout */}
+		  <Route element={<Layout />}>
 			<Route
 			  path="/"
 			  element={authUser ? <HomePage /> : <Navigate to="/signin" />}
