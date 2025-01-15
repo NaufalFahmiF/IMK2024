@@ -6,6 +6,7 @@ import { Link, useParams } from "react-router-dom";
 import { Loader, MessageCircle, Send, Share2, ThumbsUp, Trash2 } from "lucide-react";
 import { formatDistanceToNow } from "date-fns";
 import { id } from 'date-fns/locale';
+import Swal from 'sweetalert2'
 
 import PostAction from "./PostAction";
 
@@ -58,8 +59,22 @@ const Post = ({ post }) => {
 	});
 
 	const handleDeletePost = () => {
-		if (!window.confirm("Are you sure you want to delete this post?")) return;
-		deletePost();
+		Swal.fire({
+		  title: "Apakah Anda yakin?",
+		  text: "Postingan yang telah dihapus tidak dapat dipulihkan",
+		  icon: "warning",
+		  showCancelButton: true,
+		  confirmButtonColor: "#B76CB7",
+		  confirmButtonText: "Hapus",
+		  cancelButtonText: "Batal",
+		  customClass: {
+			cancelButton: "bg-black text-white",
+		  },
+		}).then((result) => {
+		  if (result.isConfirmed) {
+			deletePost();
+		  }
+		});
 	};
 
 	const handleLikePost = async () => {
@@ -111,7 +126,7 @@ const Post = ({ post }) => {
 						</div>
 					</div>
 					{isOwner && (
-						<button onClick={handleDeletePost} className='text-red-500 hover:text-red-700'>
+						<button onClick={handleDeletePost} className='text-[#B76CB7] hover:text-[#763996] transition-base'>
 							{isDeletingPost ? <Loader size={18} className='animate-spin' /> : <Trash2 size={18} />}
 						</button>
 					)}

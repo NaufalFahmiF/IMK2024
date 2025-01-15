@@ -68,7 +68,20 @@ function App() {
 			/>
 		  </Route>
 		</Routes>
-		<Toaster />
+		<Toaster toastOptions={{
+          success: {
+            iconTheme: {
+              primary: "#763996", 
+              secondary: "#f3e8ff",
+            },
+          },
+		  error: {
+            iconTheme: {
+              primary: "#763996", 
+              secondary: "#f3e8ff",
+            },
+          },
+        }} />
 	  </>
 	);
 }

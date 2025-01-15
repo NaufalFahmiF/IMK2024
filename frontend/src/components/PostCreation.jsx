@@ -84,7 +84,7 @@ const PostCreation = ({ user }) => {
 
 			<div className='flex justify-end items-center mt-4 space-x-2'>
 				<div className='flex space-x-4'>
-					<label className='bg-secondary text-[#763996] hover:text-white hover:border-[#B76CB7] hover:bg-[#B76CB7] active:text-white active:bg-[#B76CB7] border border-gray-500 rounded-full px-3 py-2 hover:bg-primary-dark transition-colors duration-200 flex items-center space-x-2'>
+					<label className='bg-secondary text-[#763996] hover:text-white hover:border-[#B76CB7] hover:bg-[#B76CB7] active:text-white active:bg-[#B76CB7] border border-gray-500 rounded-full px-3 py-2 hover:bg-primary-dark transition-base flex items-center space-x-2'>
 						<Image size={20} className='' />
 						<span>Foto</span>
 						<input type='file' accept='image/*' className='hidden' onChange={handleImageChange} />
@@ -92,7 +92,7 @@ const PostCreation = ({ user }) => {
 				</div>
 
 				<button
-					className='bg-neutral hover:bg-[#B76CB7] text-white rounded-full px-4 py-2 transition-colors duration-200'
+					className='bg-neutral hover:bg-[#B76CB7] text-white rounded-full px-4 py-2 transition-base'
 					onClick={handlePostCreation}
 					disabled={isPending}
 				>

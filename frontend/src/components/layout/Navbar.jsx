@@ -41,11 +41,11 @@ const Navbar = () => {
 					<div className='flex items-center gap-2 md:gap-6'>
 						{authUser ? (
 							<>
-								<Link to={"/"} className='text-neutral flex flex-col items-center hover:text-[#763996] transition-colors'>
+								<Link to={"/"} className='text-neutral flex flex-col items-center hover:text-[#763996] transition-base'>
 									<Home size={20} />
 									<span className='text-xs hidden md:block'>Beranda</span>
 								</Link>
-								<Link to='/network' className='text-neutral flex flex-col items-center relative hover:text-[#763996] transition-colors'>
+								<Link to='/network' className='text-neutral flex flex-col items-center relative hover:text-[#763996] transition-base'>
 									<Users size={20} />
 									<span className='text-xs hidden md:block'>Jejaring Saya</span>
 									{unreadConnectionRequestsCount > 0 && (
@@ -57,7 +57,7 @@ const Navbar = () => {
 										</span>
 									)}
 								</Link>
-								<Link to='/notifications' className='text-neutral flex flex-col items-center relative hover:text-[#763996] transition-colors'>
+								<Link to='/notifications' className='text-neutral flex flex-col items-center relative hover:text-[#763996] transition-base'>
 									<Bell size={20} />
 									<span className='text-xs hidden md:block'>Notifikasi</span>
 									{unreadNotificationCount > 0 && (
@@ -71,13 +71,13 @@ const Navbar = () => {
 								</Link>
 								<Link
 									to={`/profile/${authUser.username}`}
-									className='text-neutral flex flex-col items-center hover:text-[#763996] transition-colors'
+									className='text-neutral flex flex-col items-center hover:text-[#763996] transition-base'
 								>
 									<User size={20} />
 									<span className='text-xs hidden md:block'>Saya</span>
 								</Link>
 								<button
-									className='bg-neutral p-3 rounded-lg flex items-center space-x-1 text-sm hover:bg-[#B76CB7] text-white hover:bg-primary-dark transition-colors duration-200'
+									className='bg-neutral p-3 rounded-lg flex items-center space-x-1 text-sm hover:bg-[#B76CB7] text-white hover:bg-primary-dark transition-base'
 									onClick={() => logout()}
 								>
 									<LogOut size={20} />

@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { axiosInstance } from "../lib/axios";
 import Sidebar from "../components/Sidebar";
+import HyperLink from "../components/HyperLink";
 import PostCreation from "../components/PostCreation";
 import Post from "../components/Post";
 import { Users } from "lucide-react";
@@ -31,6 +32,7 @@ const HomePage = () => {
 		<div className='grid grid-cols-1 lg:grid-cols-4 gap-6 '>
 			<div className='hidden lg:block lg:col-span-1'>
 				<Sidebar user={authUser} />
+				<HyperLink />
 			</div>
 			<div className='col-span-1 lg:col-span-2 order-first lg:order-none'>
 				<PostCreation user={authUser} />

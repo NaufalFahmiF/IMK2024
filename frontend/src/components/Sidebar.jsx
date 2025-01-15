@@ -53,7 +53,7 @@ export default function Sidebar({ user }) {
 				</nav>
 			</div>
 			<div className='border-t border-base-100 p-4'>
-				<Link to={`/profile/${user.username}`} className='px-4 text-sm font-semibold hover:text-[#763996] transition-colors'>
+				<Link to={`/profile/${user.username}`} className='px-4 text-sm font-semibold hover:text-[#763996] transition-base'>
 					Profil Saya
 				</Link>
 			</div>
