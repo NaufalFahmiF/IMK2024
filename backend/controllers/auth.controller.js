@@ -8,20 +8,20 @@ export const signup = async (req, res) => {
 		const { name, username, email, password } = req.body;
 
 		if (!name || !username || !email || !password) {
-			return res.status(400).json({ message: "All fields are required" });
+			return res.status(400).json({ message: "Semua kolom harus diisi" });
 		}
 		const existingEmail = await User.findOne({ email });
 		if (existingEmail) {
-			return res.status(400).json({ message: "Email already exists" });
+			return res.status(400).json({ message: "Email sudah terdaftar" });
 		}
 
 		const existingUsername = await User.findOne({ username });
 		if (existingUsername) {
-			return res.status(400).json({ message: "Username already exists" });
+			return res.status(400).json({ message: "Username sudah terdaftar" });
 		}
 
 		if (password.length < 6) {
-			return res.status(400).json({ message: "Password must be at least 6 characters" });
+			return res.status(400).json({ message: "Password harus terdiri dari minimal 6 karakter" });
 		}
 
 		const salt = await bcrypt.genSalt(10);
@@ -45,17 +45,17 @@ export const signup = async (req, res) => {
 			secure: process.env.NODE_ENV === "production", // prevents man-in-the-middle attacks
 		});
 
-		res.status(201).json({ message: "User registered successfully" });
+		res.status(201).json({ message: "Pengguna berhasil mendaftar" });
 
 		const profileUrl = process.env.CLIENT_URL + "/profile/" + user.username;
 
 		try {
 			await sendWelcomeEmail(user.email, user.name, profileUrl);
 		} catch (emailError) {
-			console.error("Error sending welcome Email", emailError);
+			console.error("Terjadi kesalahan saat mengirim email selamat datang", emailError);
 		}
 	} catch (error) {
-		console.log("Error in signup: ", error.message);
+		console.log("Terjadi kesalahan saat mendaftar: ", error.message);
 		res.status(500).json({ message: "Internal server error" });
 	}
 };
@@ -67,13 +67,13 @@ export const login = async (req, res) => {
 		// Check if user exists
 		const user = await User.findOne({ username });
 		if (!user) {
-			return res.status(400).json({ message: "Invalid credentials" });
+			return res.status(400).json({ message: "Username atau password salah" });
 		}
 
 		// Check password
 		const isMatch = await bcrypt.compare(password, user.password);
 		if (!isMatch) {
-			return res.status(400).json({ message: "Invalid credentials" });
+			return res.status(400).json({ message: "Username atau password salah" });
 		}
 
 		// Create and send token
@@ -85,7 +85,7 @@ export const login = async (req, res) => {
 			secure: process.env.NODE_ENV === "production",
 		});
 
-		res.json({ message: "Logged in successfully" });
+		res.json({ message: "Berhasil login" });
 	} catch (error) {
 		console.error("Error in login controller:", error);
 		res.status(500).json({ message: "Server error" });
@@ -94,7 +94,7 @@ export const login = async (req, res) => {
 
 export const logout = (req, res) => {
 	res.clearCookie("jwt-linkedin");
-	res.json({ message: "Logged out successfully" });
+	res.json({ message: "Berhasil logout" });
 };
 
 export const getCurrentUser = async (req, res) => {

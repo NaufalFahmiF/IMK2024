@@ -18,13 +18,14 @@ const AboutSection = ({ userData, isOwnProfile, onSave }) => {
 							<textarea
 								value={about}
 								onChange={(e) => setAbout(e.target.value)}
-								className='w-full p-2 border rounded'
+								placeholder="Tambahkan deskripsi tentang diri Anda"
+								className='w-full p-2 border rounded-md focus:outline-none focus:border-[#B369B5] focus:ring-2 focus:ring-[#B369B5]'
 								rows='4'
 							/>
 							<button
 								onClick={handleSave}
-								className='mt-2 bg-primary text-white py-2 px-4 rounded hover:bg-primary-dark 
-								transition duration-300'
+								className='mt-2 bg-primary text-white py-2 px-4 rounded hover:bg-[#8a528d] 
+								transition-base font-medium'
 							>
 								Simpan
 							</button>
@@ -34,7 +35,7 @@ const AboutSection = ({ userData, isOwnProfile, onSave }) => {
 							<p>{userData.about}</p>
 							<button
 								onClick={() => setIsEditing(true)}
-								className='mt-2 text-primary hover:text-primary-dark transition duration-300'
+								className='mt-2 text-primary hover:text-[#8a528d] hover:underline transition-base'
 							>
 								Ubah
 							</button>

@@ -59,7 +59,7 @@ const ProfileHeader = ({ userData, onSave, isOwnProfile }) => {
 	const { mutate: removeConnection } = useMutation({
 		mutationFn: (userId) => axiosInstance.delete(`/connections/${userId}`),
 		onSuccess: () => {
-			toast.success("Connection removed");
+			toast.success("Koneksi berhasil dihapus");
 			refetchConnectionStatus();
 			queryClient.invalidateQueries(["connectionRequests"]);
 		},
@@ -89,7 +89,7 @@ const ProfileHeader = ({ userData, onSave, isOwnProfile }) => {
 							onClick={() => removeConnection(userData._id)}
 						>
 							<X size={20} className='mr-2' />
-							Remove Connection
+							Hapus Koneksi
 						</button>
 					</div>
 				);
@@ -126,7 +126,7 @@ const ProfileHeader = ({ userData, onSave, isOwnProfile }) => {
 						className='bg-primary hover:bg-primary-dark text-white py-2 px-4 rounded-full transition duration-300 flex items-center justify-center'
 					>
 						<UserPlus size={20} className='mr-2' />
-						Connect
+						Hubungkan
 					</button>
 				);
 		}
@@ -242,8 +242,8 @@ const ProfileHeader = ({ userData, onSave, isOwnProfile }) => {
 					) : (
 						<button
 							onClick={() => setIsEditing(true)}
-							className='w-full bg-primary text-white py-2 px-4 rounded-full hover:bg-primary-dark
-							 transition duration-300'
+							className='w-full bg-primary text-white py-2 px-4 rounded-full hover:bg-[#8a528d]
+							 transition-base font-semibold'
 						>
 							Ubah Profil
 						</button>

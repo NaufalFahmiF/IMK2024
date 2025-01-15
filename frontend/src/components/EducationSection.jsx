@@ -48,7 +48,7 @@ const EducationSection = ({ userData, isOwnProfile, onSave }) => {
 						</div>
 					</div>
 					{isEditing && (
-						<button onClick={() => handleDeleteEducation(edu._id)} className='text-red-500'>
+						<button onClick={() => handleDeleteEducation(edu._id)} className='text-[#B369B5]'>
 							<X size={20} />
 						</button>
 					)}
@@ -61,32 +61,32 @@ const EducationSection = ({ userData, isOwnProfile, onSave }) => {
 						placeholder='Instansi Pendidikan'
 						value={newEducation.school}
 						onChange={(e) => setNewEducation({ ...newEducation, school: e.target.value })}
-						className='w-full p-2 border rounded mb-2'
+						className='w-full p-2 border mb-2 rounded-md focus:outline-none focus:border-[#B369B5] focus:ring-2 focus:ring-[#B369B5]'
 					/>
 					<input
 						type='text'
 						placeholder='Bidang Studi'
 						value={newEducation.fieldOfStudy}
 						onChange={(e) => setNewEducation({ ...newEducation, fieldOfStudy: e.target.value })}
-						className='w-full p-2 border rounded mb-2'
+						className='w-full p-2 border mb-2 rounded-md focus:outline-none focus:border-[#B369B5] focus:ring-2 focus:ring-[#B369B5]'
 					/>
 					<input
 						type='number'
 						placeholder='Tahun Mulai'
 						value={newEducation.startYear}
 						onChange={(e) => setNewEducation({ ...newEducation, startYear: e.target.value })}
-						className='w-full p-2 border rounded mb-2'
+						className='w-full p-2 border mb-2 rounded-md focus:outline-none focus:border-[#B369B5] focus:ring-2 focus:ring-[#B369B5]'
 					/>
 					<input
 						type='number'
 						placeholder='Tahun Selesai'
 						value={newEducation.endYear}
 						onChange={(e) => setNewEducation({ ...newEducation, endYear: e.target.value })}
-						className='w-full p-2 border rounded mb-2'
+						className='w-full p-2 border mb-2 rounded-md focus:outline-none focus:border-[#B369B5] focus:ring-2 focus:ring-[#B369B5]'
 					/>
 					<button
 						onClick={handleAddEducation}
-						className='bg-primary text-white py-2 px-4 rounded hover:bg-primary-dark transition duration-300'
+						className='bg-primary text-white mt-3 py-2 px-4 rounded hover:bg-[#8a528d] transition-base font-medium'
 					>
 						Tambah Pendidikan
 					</button>
@@ -98,15 +98,14 @@ const EducationSection = ({ userData, isOwnProfile, onSave }) => {
 					{isEditing ? (
 						<button
 							onClick={handleSave}
-							className='mt-4 bg-primary text-white py-2 px-4 rounded hover:bg-primary-dark
-							 transition duration-300'
+							className='mt-2 bg-primary text-white py-2 px-4 rounded hover:bg-[#8a528d] transition-base font-medium'
 						>
 							Simpan Perubahan
 						</button>
 					) : (
 						<button
 							onClick={() => setIsEditing(true)}
-							className='mt-4 text-primary hover:text-primary-dark transition duration-300'
+							className='mt-4 text-primary hover:text-[#8a528d] hover:underline transition-base'
 						>
 							Ubah Pendidikan
 						</button>

@@ -32,7 +32,7 @@ const SignInForm = () => {
                 placeholder='Masukkan Username Anda'
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
-                className='w-full p-2 border mb-1 border-gray-300 rounded-md placeholder:font-light placeholder:text-gray-500 focus:outline-none focus:border-[#B369B5] focus:ring-2 focus:ring-[#B369B5] transition-all ease-in duration-300'
+                className='w-full p-2 border mb-1 border-gray-300 rounded-md focus:outline-none focus:border-[#B369B5] focus:ring-2 focus:ring-[#B369B5]'
                 required
             />
             <span className="mb-2 text-md">Password</span>
@@ -41,7 +41,7 @@ const SignInForm = () => {
                 placeholder='Masukkan Password Anda'
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className='w-full p-2 border mb-1 border-gray-300 rounded-md placeholder:font-light placeholder:text-gray-500 focus:outline-none focus:border-[#B369B5] focus:ring-2 focus:ring-[#B369B5] transition-all ease-in duration-300'
+                className='w-full p-2 border mb-1 border-gray-300 rounded-md focus:outline-none focus:border-[#B369B5] focus:ring-2 focus:ring-[#B369B5]'
                 required
             />
             <div className="py-1 text-gray-400 text-sm">

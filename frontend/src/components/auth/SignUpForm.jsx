@@ -5,7 +5,7 @@ import toast from "react-hot-toast";
 import { Loader } from "lucide-react";
 
 const SignUpForm = () => {
-	const [namalengkap, setName] = useState("");
+	const [name, setName] = useState("");
 	const [email, setEmail] = useState("");
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -14,7 +14,8 @@ const SignUpForm = () => {
 
     const { mutate: signUpMutation, isLoading } = useMutation({
         mutationFn: async (data) => {
-			const res = axiosInstance.post("/auth/login", data);
+			const res = axiosInstance.post("/auth/signup", data);
+            console.log(data);
 			return res.data; 
 		},
         onSuccess: () => {
@@ -28,7 +29,7 @@ const SignUpForm = () => {
 
     const handleSignUp = (e) => {
         e.preventDefault();
-        signUpMutation({ namalengkap, username, email, password });
+        signUpMutation({ name, username, email, password });
     };
 
     return (
@@ -37,7 +38,7 @@ const SignUpForm = () => {
             <input
                 type='text'
                 placeholder='Masukkan Nama Lengkap Anda'
-                value={namalengkap}
+                value={name}
                 onChange={(e) => setName(e.target.value)}
                 className='w-full p-2 border mb-1 border-gray-300 rounded-md placeholder:font-light placeholder:text-gray-500 focus:outline-none focus:border-[#B369B5] focus:ring-2 focus:ring-[#B369B5] transition-all ease-in duration-300'
                 required
