@@ -13,6 +13,7 @@ const SignInForm = () => {
         mutationFn: (userData) => axiosInstance.post("/auth/login", userData),
         onSuccess: () => {
             queryClient.invalidateQueries({ queryKey: ["authUser"] });
+            toast.success("Berhasil masuk");
         },
         onError: (err) => {
             toast.error(err.response.data.message || "Terjadi suatu kesalahan");
@@ -26,22 +27,22 @@ const SignInForm = () => {
 
     return (
         <form onSubmit={handleSubmit} className='py-2'>
-            <span className="mb-2 text-md">Username</span>
+            <span className="text-md">Username</span>
             <input
                 type='text'
                 placeholder='Masukkan Username Anda'
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
-                className='w-full p-2 border mb-1 border-gray-300 rounded-md focus:outline-none focus:border-[#B369B5] focus:ring-2 focus:ring-[#B369B5]'
+                className='w-full p-2 mt-2 border mb-3 border-gray-300 rounded-md focus:outline-none focus:border-[#B369B5] focus:ring-2 focus:ring-[#B369B5]'
                 required
             />
-            <span className="mb-2 text-md">Password</span>
+            <span className="text-md">Password</span>
             <input
                 type='password'
                 placeholder='Masukkan Password Anda'
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className='w-full p-2 border mb-1 border-gray-300 rounded-md focus:outline-none focus:border-[#B369B5] focus:ring-2 focus:ring-[#B369B5]'
+                className='w-full p-2 mt-2 border mb-3 border-gray-300 rounded-md focus:outline-none focus:border-[#B369B5] focus:ring-2 focus:ring-[#B369B5]'
                 required
             />
             <div className="py-1 text-gray-400 text-sm">

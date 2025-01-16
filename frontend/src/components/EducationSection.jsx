@@ -1,5 +1,7 @@
 import { School, X } from "lucide-react";
 import { useState } from "react";
+import Swal from "sweetalert2";
+import toast from "react-hot-toast";
 
 const EducationSection = ({ userData, isOwnProfile, onSave }) => {
 	const [isEditing, setIsEditing] = useState(false);
@@ -21,10 +23,39 @@ const EducationSection = ({ userData, isOwnProfile, onSave }) => {
 				endYear: "",
 			});
 		}
+
+		const { school, fieldOfStudy, startYear, endYear } = newEducation;
+
+		if (
+			!school.trim() &&
+			!fieldOfStudy.trim() &&
+			!startYear.trim() &&
+			!endYear.trim()
+		) {
+			toast.error("Semua kolom masih kosong");
+			return;
+		}
 	};
 
 	const handleDeleteEducation = (id) => {
-		setEducations(educations.filter((edu) => edu._id !== id));
+		Swal.fire({
+			title: "Apakah Anda yakin?",
+			text: "Pendidikan yang dihapus tidak dapat dipulihkan",
+			icon: "warning",
+			showCancelButton: true,
+			confirmButtonColor: "#B76CB7",
+			confirmButtonText: "Hapus",
+			cancelButtonText: "Batal",
+			customClass: {
+				cancelButton: "bg-black text-white",
+			},
+		}).then((result) => {
+			if (result.isConfirmed) {
+				setEducations(educations.filter((edu) => edu._id !== id));
+	
+				toast.success("Pendidikan berhasil dihapus");
+			}
+		});
 	};
 
 	const handleSave = () => {
@@ -56,33 +87,37 @@ const EducationSection = ({ userData, isOwnProfile, onSave }) => {
 			))}
 			{isEditing && (
 				<div className='mt-4'>
+					<span className="text-md font-medium">Instansi Pendidikan</span>
 					<input
 						type='text'
-						placeholder='Instansi Pendidikan'
+						placeholder='Misalnya: Universitas Gunadarma'
 						value={newEducation.school}
 						onChange={(e) => setNewEducation({ ...newEducation, school: e.target.value })}
-						className='w-full p-2 border mb-2 rounded-md focus:outline-none focus:border-[#B369B5] focus:ring-2 focus:ring-[#B369B5]'
+						className='w-full p-2 border mt-2 mb-3 rounded-md focus:outline-none focus:border-[#B369B5] focus:ring-2 focus:ring-[#B369B5]'
 					/>
+					<span className="text-md font-medium">Bidang Studi</span>
 					<input
 						type='text'
-						placeholder='Bidang Studi'
+						placeholder='Misalnya: Sistem Informasi'
 						value={newEducation.fieldOfStudy}
 						onChange={(e) => setNewEducation({ ...newEducation, fieldOfStudy: e.target.value })}
-						className='w-full p-2 border mb-2 rounded-md focus:outline-none focus:border-[#B369B5] focus:ring-2 focus:ring-[#B369B5]'
+						className='w-full p-2 border mt-2 mb-3 rounded-md focus:outline-none focus:border-[#B369B5] focus:ring-2 focus:ring-[#B369B5]'
 					/>
+					<span className="text-md font-medium">Tahun Mulai</span>
 					<input
 						type='number'
-						placeholder='Tahun Mulai'
+						placeholder='Misalnya: 2022'
 						value={newEducation.startYear}
 						onChange={(e) => setNewEducation({ ...newEducation, startYear: e.target.value })}
-						className='w-full p-2 border mb-2 rounded-md focus:outline-none focus:border-[#B369B5] focus:ring-2 focus:ring-[#B369B5]'
+						className='w-full p-2 border mt-2 mb-3 rounded-md focus:outline-none focus:border-[#B369B5] focus:ring-2 focus:ring-[#B369B5]'
 					/>
+					<span className="text-md font-medium">Tahun Berakhir</span>
 					<input
 						type='number'
-						placeholder='Tahun Selesai'
+						placeholder='Misalnya: 2026'
 						value={newEducation.endYear}
 						onChange={(e) => setNewEducation({ ...newEducation, endYear: e.target.value })}
-						className='w-full p-2 border mb-2 rounded-md focus:outline-none focus:border-[#B369B5] focus:ring-2 focus:ring-[#B369B5]'
+						className='w-full p-2 border mt-2 mb-3 rounded-md focus:outline-none focus:border-[#B369B5] focus:ring-2 focus:ring-[#B369B5]'
 					/>
 					<button
 						onClick={handleAddEducation}

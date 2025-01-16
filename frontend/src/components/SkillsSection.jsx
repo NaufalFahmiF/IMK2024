@@ -1,5 +1,7 @@
 import { X } from "lucide-react";
 import { useState } from "react";
+import toast from "react-hot-toast";
+import Swal from "sweetalert2";
 
 const SkillsSection = ({ userData, isOwnProfile, onSave }) => {
 	const [isEditing, setIsEditing] = useState(false);
@@ -11,10 +13,32 @@ const SkillsSection = ({ userData, isOwnProfile, onSave }) => {
 			setSkills([...skills, newSkill]);
 			setNewSkill("");
 		}
+
+		if (!newSkill.trim()) {
+			toast.error("Kemampuan masih kosong");
+			return;
+		}
 	};
 
 	const handleDeleteSkill = (skill) => {
-		setSkills(skills.filter((s) => s !== skill));
+		Swal.fire({
+			title: "Apakah Anda yakin?",
+			text: "Kemampuan yang dihapus tidak dapat dipulihkan",
+			icon: "warning",
+			showCancelButton: true,
+			confirmButtonColor: "#B76CB7",
+			confirmButtonText: "Hapus",
+			cancelButtonText: "Batal",
+			customClass: {
+				cancelButton: "bg-black text-white",
+			},
+		}).then((result) => {
+			if (result.isConfirmed) {
+				setSkills(skills.filter((s) => s !== skill));
+	
+				toast.success("Kemampuan berhasil dihapus");
+			}
+		});
 	};
 
 	const handleSave = () => {
@@ -45,7 +69,7 @@ const SkillsSection = ({ userData, isOwnProfile, onSave }) => {
 				<div className='mt-4 flex'>
 					<input
 						type='text'
-						placeholder='Tambahkan Skill baru'
+						placeholder='Tambahkan kemampuan baru'
 						value={newSkill}
 						onChange={(e) => setNewSkill(e.target.value)}
 						className='flex-grow p-2 border rounded-l focus:outline-none focus:border-[#B369B5] focus:ring-2 focus:ring-[#B369B5]'

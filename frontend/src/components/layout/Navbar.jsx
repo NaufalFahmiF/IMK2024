@@ -1,9 +1,11 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { axiosInstance } from "../../lib/axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Bell, Home, LogOut, User, Users } from "lucide-react";
+import toast from "react-hot-toast";
 
 const Navbar = () => {
+	const navigate = useNavigate();
 	const { data: authUser } = useQuery({ queryKey: ["authUser"] });
 	const queryClient = useQueryClient();
 
@@ -23,6 +25,8 @@ const Navbar = () => {
 		mutationFn: () => axiosInstance.post("/auth/logout"),
 		onSuccess: () => {
 			queryClient.invalidateQueries({ queryKey: ["authUser"] });
+			navigate("/");
+			toast.success("Berhasil keluar");
 		},
 	});
 
@@ -86,7 +90,7 @@ const Navbar = () => {
 							</>
 						) : (
 							<>
-								<Link to='/login' className='btn btn-ghost'>
+								<Link to='/signin' className='btn btn-ghost'>
 									Masuk
 								</Link>
 								<Link to='/signup' className='btn btn-primary'>

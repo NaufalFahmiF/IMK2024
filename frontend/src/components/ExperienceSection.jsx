@@ -3,6 +3,7 @@ import { useState } from "react";
 import { formatDate } from "../utils/dateUtils";
 import toast from "react-hot-toast";
 import Swal from "sweetalert2";
+import Datepicker from "tailwind-datepicker-react"
 
 const ExperienceSection = ({ userData, isOwnProfile, onSave }) => {
 	const [isEditing, setIsEditing] = useState(false);
@@ -105,26 +106,29 @@ const ExperienceSection = ({ userData, isOwnProfile, onSave }) => {
 
 			{isEditing && (
 				<div className='mt-4'>
+					<span className="text-md font-medium">Posisi</span>
 					<input
 						type='text'
-						placeholder='Posisi'
+						placeholder='Misalnya: Ketua Praktikum'
 						value={newExperience.title}
 						onChange={(e) => setNewExperience({ ...newExperience, title: e.target.value })}
-						className='w-full p-2 border mb-2 rounded-md focus:outline-none focus:border-[#B369B5] focus:ring-2 focus:ring-[#B369B5]'
+						className='w-full p-2 mt-2 border mb-3 rounded-md focus:outline-none focus:border-[#B369B5] focus:ring-2 focus:ring-[#B369B5]'
 					/>
+					<span className="text-md font-medium">Perusahaan atau organisasi</span>
 					<input
 						type='text'
-						placeholder='Perusahaan'
+						placeholder='Misalnya: Laboratorium Sistem Informasi'
 						value={newExperience.company}
 						onChange={(e) => setNewExperience({ ...newExperience, company: e.target.value })}
-						className='w-full p-2 border mb-2 rounded-md focus:outline-none focus:border-[#B369B5] focus:ring-2 focus:ring-[#B369B5]'
+						className='w-full p-2 border mt-2 mb-3 rounded-md focus:outline-none focus:border-[#B369B5] focus:ring-2 focus:ring-[#B369B5]'
 					/>
+					<span className='text-md font-medium'>Tanggal Mulai</span>
 					<input
 						type='date'
-						placeholder='Start Date'
+						placeholder='Tanggal Mulai'
 						value={newExperience.startDate}
 						onChange={(e) => setNewExperience({ ...newExperience, startDate: e.target.value })}
-						className='w-full p-2 border mb-2 rounded-md focus:outline-none focus:border-[#B369B5] focus:ring-2 focus:ring-[#B369B5]'
+						className='w-full p-2 border mt-2 mb-1 rounded-md focus:outline-none focus:border-[#B369B5] focus:ring-2 focus:ring-[#B369B5]'
 					/>
 					<div className='flex items-center mb-2'>
 						<input
@@ -132,24 +136,26 @@ const ExperienceSection = ({ userData, isOwnProfile, onSave }) => {
 							id='currentlyWorking'
 							checked={newExperience.currentlyWorking}
 							onChange={handleCurrentlyWorkingChange}
-							className='mr-2'
+							className='mr-2 accent-[#B369B5] mb-3'
 						/>
-						<label htmlFor='currentlyWorking'>Saat ini saya bekerja di sini </label>
+						<label htmlFor='currentlyWorking' className='mb-3'>Saat ini saya bekerja di sini </label>
 					</div>
+					<span className="text-md font-medium">Tanggal Berakhir</span>
 					{!newExperience.currentlyWorking && (
 						<input
 							type='date'
-							placeholder='End Date'
+							placeholder='Tanggal berakhir'
 							value={newExperience.endDate}
 							onChange={(e) => setNewExperience({ ...newExperience, endDate: e.target.value })}
-							className='w-full p-2 border mb-2 rounded-md focus:outline-none focus:border-[#B369B5] focus:ring-2 focus:ring-[#B369B5]'
+							className='w-full mt-2 mb-3 p-2 border rounded-md focus:outline-none focus:border-[#B369B5] focus:ring-2 focus:ring-[#B369B5]'
 						/>
 					)}
+					<span className="text-md font-medium">Deskripsi</span>
 					<textarea
-						placeholder='Deskripsi'
+						placeholder='Misalnya: Selama praktikum, saya bertanggung jawab atas berlangsungnya kegiatan...'
 						value={newExperience.description}
 						onChange={(e) => setNewExperience({ ...newExperience, description: e.target.value })}
-						className='w-full p-2 border mb-2 rounded-md focus:outline-none focus:border-[#B369B5] focus:ring-2 focus:ring-[#B369B5]'
+						className='w-full p-2 border mt-2 mb-3 rounded-md focus:outline-none focus:border-[#B369B5] focus:ring-2 focus:ring-[#B369B5]'
 					/>
 					<button
 						onClick={handleAddExperience}

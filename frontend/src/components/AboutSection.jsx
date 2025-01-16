@@ -15,11 +15,12 @@ const AboutSection = ({ userData, isOwnProfile, onSave }) => {
 				<>
 					{isEditing ? (
 						<>
+							<span className="text-md font-medium">Tambahkan ringkasan mengenai diri Anda</span>
 							<textarea
 								value={about}
 								onChange={(e) => setAbout(e.target.value)}
-								placeholder="Tambahkan deskripsi tentang diri Anda"
-								className='w-full p-2 border rounded-md focus:outline-none focus:border-[#B369B5] focus:ring-2 focus:ring-[#B369B5]'
+								placeholder="Misalnya: Saya adalah seorang yang ramah dan bertanggung jawab"
+								className='w-full mt-2 p-2 border rounded-md focus:outline-none focus:border-[#B369B5] focus:ring-2 focus:ring-[#B369B5]'
 								rows='4'
 							/>
 							<button
