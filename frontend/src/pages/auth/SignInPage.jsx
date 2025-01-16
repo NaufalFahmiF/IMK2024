@@ -27,7 +27,7 @@ const SignInPage = () => {
                         className="absolute top-4 right-4 w-14 h-14"
                     />
                     <span className="mb-3 text-4xl font-bold">Masuk</span>
-                    <span className="font-light text-gray-500 mb-8">
+                    <span className="font-regular text-gray-400 mb-8">
                         Masuk dengan akun StudentSite
                     </span>
                     <SignInForm />

@@ -3,6 +3,7 @@ import { useState } from "react";
 import { axiosInstance } from "../../lib/axios";
 import toast from "react-hot-toast";
 import { Loader } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const SignUpForm = () => {
 	const [name, setName] = useState("");
@@ -21,6 +22,7 @@ const SignUpForm = () => {
         onSuccess: () => {
 			toast.success("Akun berhasil dibuat");
             queryClient.invalidateQueries({ queryKey: ["authUser"] });
+            Navigate('/');
         },
         onError: (err) => {
             toast.error(err.response.data.message || "Terjadi kesalahan");
@@ -34,46 +36,46 @@ const SignUpForm = () => {
 
     return (
         <form onSubmit={handleSignUp} className='py-2'>
-            <span className="text-md">Nama Lengkap</span>
+            <span className="text-md font-medium">Nama Lengkap</span>
             <input
                 type='text'
                 placeholder='Masukkan Nama Lengkap Anda'
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                className='w-full mt-2 p-2 border mb-1 border-gray-300 rounded-md placeholder:font-light placeholder:text-gray-500 focus:outline-none focus:border-[#B369B5] focus:ring-2 focus:ring-[#B369B5] transition-all ease-in duration-300'
+                className='w-full mt-2 p-2 border mb-1 border-gray-300 rounded-md focus:outline-none focus:border-[#B369B5] focus:ring-2 focus:ring-[#B369B5]'
                 required
             />
-			<span className="text-md">Username</span>
+			<span className="text-md font-medium">Username</span>
             <input
                 type='text'
                 placeholder='Masukkan Username Anda'
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
-                className='w-full mt-2 p-2 border mb-1 border-gray-300 rounded-md placeholder:font-light placeholder:text-gray-500 focus:outline-none focus:border-[#B369B5] focus:ring-2 focus:ring-[#B369B5] transition-all ease-in duration-300'
+                className='w-full mt-2 p-2 border mb-1 border-gray-300 rounded-md focus:outline-none focus:border-[#B369B5] focus:ring-2 focus:ring-[#B369B5]'
                 required
             />
-            <span className="text-md">Email</span>
+            <span className="text-md font-medium">Email</span>
             <input
                 type='email'
                 placeholder='Masukkan Email Anda'
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className='w-full mt-2 p-2 border mb-1 border-gray-300 rounded-md placeholder:font-light placeholder:text-gray-500 focus:outline-none focus:border-[#B369B5] focus:ring-2 focus:ring-[#B369B5] transition-all ease-in duration-300'
+                className='w-full mt-2 p-2 border mb-1 border-gray-300 rounded-md focus:outline-none focus:border-[#B369B5] focus:ring-2 focus:ring-[#B369B5]'
                 required
             />
-			<span className="text-md">Password</span>
+			<span className="text-md font-medium">Password</span>
             <input
                 type='password'
                 placeholder='Masukkan Password Anda'
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className='w-full mt-2 p-2 border mb-1 border-gray-300 rounded-md placeholder:font-light placeholder:text-gray-500 focus:outline-none focus:border-[#B369B5] focus:ring-2 focus:ring-[#B369B5] transition-all ease-in duration-300'
+                className='w-full mt-2 p-2 border mb-1 border-gray-300 rounded-md focus:outline-none focus:border-[#B369B5] focus:ring-2 focus:ring-[#B369B5]'
                 required
             />
-            <div className="py-1 text-gray-400 text-sm">
+            <div className="py-1 text-gray-400 text-sm font-regular">
                 Petunjuk: 
             </div>
-            <div className="mb-10 text-gray-400 text-sm">
+            <div className="mb-10 text-gray-400 text-sm font-regular">
                 Silahkan aktivasi akun Anda menggunakan kredensial akun Studentsite Anda.
             </div>
             <button type='submit' disabled={isLoading} className='bg-[#B369B5] w-full font-bold text-white p-2 rounded-lg hover:text-white hover:bg-[#8a528d] transition-all ease-in duration-300'>

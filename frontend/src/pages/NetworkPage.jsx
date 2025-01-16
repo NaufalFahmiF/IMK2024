@@ -38,7 +38,7 @@ const NetworkPage = () => {
 						</div>
 					) : (
 						<div className='bg-white rounded-lg shadow p-6 text-center mb-6'>
-							<UserPlus size={48} className='mx-auto text-gray-400 mb-4' />
+							<UserPlus size={48} className='mx-auto text-[#763996] mb-4' />
 							<h3 className='text-xl font-semibold mb-2'>Tidak ada permintaan koneksi</h3>
 							<p className='text-gray-600'>
 							Anda tidak memiliki permintaan koneksi yang menunggu untuk saat ini.
