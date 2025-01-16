@@ -1,8 +1,8 @@
 <h1 align="center">UG Corner 💌</h1>
 
-![Demo App](/frontend/public/screenshotforreadme.png)
+![Demo App](/frontend/public/screenshot-for-readme.png)
 
-[Video Tutorial on Youtube](https://vo.la/TXuhpo)
+[Video Tutorial](https://vo.la/TXuhpo)
 
 Fitur pada project ini
 -   🚀 Project Setup
@@ -44,19 +44,19 @@ npm i
 ### file .env
 ```bash
 PORT=5000
-MONGO_URI=mongodb+srv://naufalffadhillah:uADehIhcmcCOOI62@cluster0.l6ifr.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+MONGO_URI=<your_mongo_uri>
 
-JWT_SECRET=yourverystrongsecret
+JWT_SECRET=<yourverystrongsecret>
 
 NODE_ENV=development
 
-MAILTRAP_TOKEN=8cdcf371b2dccfcfa53f8dfd88c3e973
+MAILTRAP_TOKEN=<your_mailtrap_token>
 EMAIL_FROM=mailtrap@demomailtrap.com
-EMAIL_FROM_NAME=Naufal
+EMAIL_FROM_NAME=<Your_Name>
 
-CLOUDINARY_API_KEY=839372665374592
-CLOUDINARY_API_SECRET=OO0OcxPL6j2tZQZ2TBe1U1uIVbQ
-CLOUDINARY_CLOUD_NAME=dmsjkhttj
+CLOUDINARY_API_KEY=<your_cloudinary_api_key>
+CLOUDINARY_API_SECRET=<your_cloudinary_api_secret>
+CLOUDINARY_CLOUD_NAME=<your_cloudinary_cloud_name>
 
 CLIENT_URL=http://localhost:5173
 ```
