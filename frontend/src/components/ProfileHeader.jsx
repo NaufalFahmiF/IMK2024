@@ -80,12 +80,12 @@ const ProfileHeader = ({ userData, onSave, isOwnProfile }) => {
 			case "connected":
 				return (
 					<div className='flex gap-2 justify-center'>
-						<div className={`${baseClass} bg-green-500 hover:bg-green-600`}>
+						<div className={`${baseClass} bg-green-500 font-medium hover:bg-green-600`}>
 							<UserCheck size={20} className='mr-2' />
 							Terhubung
 						</div>
 						<button
-							className={`${baseClass} bg-red-500 hover:bg-red-600 text-sm`}
+							className={`${baseClass} bg-red-500 font-medium hover:bg-red-600`}
 							onClick={() => removeConnection(userData._id)}
 						>
 							<X size={20} className='mr-2' />
@@ -123,7 +123,7 @@ const ProfileHeader = ({ userData, onSave, isOwnProfile }) => {
 				return (
 					<button
 						onClick={() => sendConnectionRequest(userData._id)}
-						className='bg-primary hover:bg-[#8a528d] text-white py-2 px-4 rounded-full transition-base flex items-center justify-center'
+						className='bg-primary hover:bg-[#8a528d] font-medium text-white py-2 px-4 rounded-full transition-base flex items-center justify-center'
 					>
 						<UserPlus size={20} className='mr-2' />
 						Hubungkan

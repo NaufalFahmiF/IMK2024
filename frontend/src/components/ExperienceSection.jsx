@@ -57,7 +57,7 @@ const ExperienceSection = ({ userData, isOwnProfile, onSave }) => {
 			confirmButtonText: "Hapus",
 			cancelButtonText: "Batal",
 			customClass: {
-				cancelButton: "bg-black text-white",
+				cancelButton: "bg-gray-300 text-black",
 			},
 		}).then((result) => {
 			if (result.isConfirmed) {

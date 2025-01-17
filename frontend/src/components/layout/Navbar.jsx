@@ -39,7 +39,7 @@ const Navbar = () => {
 				<div className='flex justify-between items-center py-3'>
 					<div className='flex items-center space-x-4'>
 						<Link to='/'>
-							<img className='h-12 rounded' src='/logo-gunadarma.png' alt='LinkedIn' />
+							<img className='h-8 rounded' src='/ugcorner.png' alt='LinkedIn' />
 						</Link>
 					</div>
 					<div className='flex items-center gap-2 md:gap-6'>
