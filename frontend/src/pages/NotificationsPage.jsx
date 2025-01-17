@@ -50,7 +50,7 @@ const NotificationsPage = () => {
 			case "like":
 				return (
 					<span>
-						<strong>{notification.relatedUser.name}</strong> liked your post
+						<strong>{notification.relatedUser.name}</strong> menyukai postingan Anda
 					</span>
 				);
 			case "comment":

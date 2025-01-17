@@ -66,7 +66,7 @@ const Navbar = () => {
 									<span className='text-xs hidden md:block'>Notifikasi</span>
 									{unreadNotificationCount > 0 && (
 										<span
-											className='absolute -top-1 -right-1 md:right-4 bg-primary text-white text-xs 
+											className='absolute -top-1 -right-0 md:right-4 bg-primary text-white text-xs 
 										rounded-full size-3 md:size-4 flex items-center justify-center'
 										>
 											{unreadNotificationCount}

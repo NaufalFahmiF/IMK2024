@@ -19,8 +19,21 @@ const Post = ({ post }) => {
 	const [comments, setComments] = useState(post.comments || []);
 	const isOwner = authUser._id === post.author._id;
 	const isLiked = post.likes.includes(authUser._id);
+	const [isShared, setIsShared] = useState(false);
 
 	const queryClient = useQueryClient();
+
+	const handleShareClick = () => {
+		const postUrl = `${import.meta.env.VITE_CLIENT_URL}/post/${post._id}`;
+		navigator.clipboard.writeText(postUrl)
+		  .then(() => {
+			toast.success("Berhasil disalin");
+			setIsShared(true);
+		  })
+		  .catch(() => {
+			toast.error("Gagal menyalin");
+		  });
+	};
 
 	const { mutate: deletePost, isPending: isDeletingPost } = useMutation({
 		mutationFn: async () => {
@@ -158,7 +171,17 @@ const Post = ({ post }) => {
 						}
 						onClick={() => setShowComments(!showComments)}
 					/>
-					<PostAction icon={<Share2 size={18} />} text='Bagikan' />
+					<PostAction 
+						icon={<Share2 size={18} className={`${
+							isShared ? "fill-[#763996]" : ""
+						} hover:stroke-[#763996] transition-colors`} />} 
+						text={
+							<span 
+								className={isShared ? "text-[#763996] transition-colors" : ""}>
+								Bagikan
+					  		</span> }
+						onClick={handleShareClick}
+					/>
 				</div>
 			</div>
 

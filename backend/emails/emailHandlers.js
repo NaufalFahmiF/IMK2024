@@ -12,12 +12,12 @@ export const sendWelcomeEmail = async (email, name, profileUrl) => {
 		const response = await mailtrapClient.send({
 			from: sender,
 			to: recipient,
-			subject: "Welcome to UnLinked",
+			subject: "Selamat Datang di UG Corner",
 			html: createWelcomeEmailTemplate(name, profileUrl),
 			category: "welcome",
 		});
 
-		console.log("Welcome Email sent succesffully", response);
+		console.log("Email berhasil dikirim", response);
 	} catch (error) {
 		throw error;
 	}
@@ -36,11 +36,11 @@ export const sendCommentNotificationEmail = async (
 		const response = await mailtrapClient.send({
 			from: sender,
 			to: recipient,
-			subject: "New Comment on Your Post",
+			subject: "Komentar Baru pada Postingan Anda",
 			html: createCommentNotificationEmailTemplate(recipientName, commenterName, postUrl, commentContent),
 			category: "comment_notification",
 		});
-		console.log("Comment Notification Email sent successfully", response);
+		console.log("Email notifikasi komentar berhasil dikirim", response);
 	} catch (error) {
 		throw error;
 	}

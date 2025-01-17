@@ -11,6 +11,7 @@ const AboutSection = ({ userData, isOwnProfile, onSave }) => {
 	return (
 		<div className='bg-white shadow rounded-lg p-6 mb-6'>
 			<h2 className='text-xl font-semibold mb-4'>Tentang</h2>
+			<p>{userData.about}</p>
 			{isOwnProfile && (
 				<>
 					{isEditing ? (
@@ -33,7 +34,6 @@ const AboutSection = ({ userData, isOwnProfile, onSave }) => {
 						</>
 					) : (
 						<>
-							<p>{userData.about}</p>
 							<button
 								onClick={() => setIsEditing(true)}
 								className='mt-2 text-primary hover:text-[#8a528d] hover:underline transition-base'
