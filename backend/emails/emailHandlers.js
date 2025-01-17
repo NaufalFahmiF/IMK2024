@@ -53,7 +53,7 @@ export const sendConnectionAcceptedEmail = async (senderEmail, senderName, recip
 		const response = await mailtrapClient.send({
 			from: sender,
 			to: recipient,
-			subject: `${recipientName} accepted your connection request`,
+			subject: `${recipientName} menerima permintaan koneksi Anda`,
 			html: createConnectionAcceptedEmailTemplate(senderName, recipientName, profileUrl),
 			category: "connection_accepted",
 		});

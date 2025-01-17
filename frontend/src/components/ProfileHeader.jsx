@@ -23,7 +23,7 @@ const ProfileHeader = ({ userData, onSave, isOwnProfile }) => {
 	const { mutate: sendConnectionRequest } = useMutation({
 		mutationFn: (userId) => axiosInstance.post(`/connections/request/${userId}`),
 		onSuccess: () => {
-			toast.success("Connection request sent");
+			toast.success("Permintaan koneksi berhasil dikirim");
 			refetchConnectionStatus();
 			queryClient.invalidateQueries(["connectionRequests"]);
 		},
@@ -35,7 +35,7 @@ const ProfileHeader = ({ userData, onSave, isOwnProfile }) => {
 	const { mutate: acceptRequest } = useMutation({
 		mutationFn: (requestId) => axiosInstance.put(`/connections/accept/${requestId}`),
 		onSuccess: () => {
-			toast.success("Connection request accepted");
+			toast.success("Permintaan koneksi diterima");
 			refetchConnectionStatus();
 			queryClient.invalidateQueries(["connectionRequests"]);
 		},
@@ -47,7 +47,7 @@ const ProfileHeader = ({ userData, onSave, isOwnProfile }) => {
 	const { mutate: rejectRequest } = useMutation({
 		mutationFn: (requestId) => axiosInstance.put(`/connections/reject/${requestId}`),
 		onSuccess: () => {
-			toast.success("Connection request rejected");
+			toast.success("Permintaan koneksi ditolak");
 			refetchConnectionStatus();
 			queryClient.invalidateQueries(["connectionRequests"]);
 		},
@@ -123,7 +123,7 @@ const ProfileHeader = ({ userData, onSave, isOwnProfile }) => {
 				return (
 					<button
 						onClick={() => sendConnectionRequest(userData._id)}
-						className='bg-primary hover:bg-primary-dark text-white py-2 px-4 rounded-full transition duration-300 flex items-center justify-center'
+						className='bg-primary hover:bg-[#8a528d] text-white py-2 px-4 rounded-full transition-base flex items-center justify-center'
 					>
 						<UserPlus size={20} className='mr-2' />
 						Hubungkan
@@ -193,51 +193,22 @@ const ProfileHeader = ({ userData, onSave, isOwnProfile }) => {
 				</div>
 
 				<div className='text-center mb-4'>
-					{isEditing ? (
-						<input
-							type='text'
-							value={editedData.name ?? userData.name}
-							onChange={(e) => setEditedData({ ...editedData, name: e.target.value })}
-							className='text-2xl font-bold mb-2 text-center w-full'
-						/>
-					) : (
-						<h1 className='text-2xl font-bold mb-2'>{userData.name}</h1>
-					)}
-
-					{isEditing ? (
-						<input
-							type='text'
-							value={editedData.headline ?? userData.headline}
-							onChange={(e) => setEditedData({ ...editedData, headline: e.target.value })}
-							className='text-gray-600 text-center w-full'
-						/>
-					) : (
-						<p className='text-gray-600'>{userData.headline}</p>
-					)}
-
+					<h1 className='text-2xl font-bold mb-2'>{userData.name}</h1>
+					<p className='text-gray-600'>{userData.headline}</p>
 					<div className='flex justify-center items-center mt-2'>
 						<MapPin size={16} className='text-gray-500 mr-1' />
-						{isEditing ? (
-							<input
-								type='text'
-								value={editedData.location ?? userData.location}
-								onChange={(e) => setEditedData({ ...editedData, location: e.target.value })}
-								className='text-gray-600 text-center'
-							/>
-						) : (
-							<span className='text-gray-600'>{userData.location}</span>
-						)}
+						<span className='text-gray-600'>{userData.location}</span>
 					</div>
 				</div>
 
 				{isOwnProfile ? (
 					isEditing ? (
 						<button
-							className='w-full bg-primary text-white py-2 px-4 rounded-full hover:bg-primary-dark
-							 transition duration-300'
+							className='w-full bg-primary text-white py-2 px-4 rounded-full hover:bg-[#8a528d]
+							 transition-base font-semibold'
 							onClick={handleSave}
 						>
-							Simpan Profil
+							Simpan Foto Profil
 						</button>
 					) : (
 						<button
@@ -245,7 +216,7 @@ const ProfileHeader = ({ userData, onSave, isOwnProfile }) => {
 							className='w-full bg-primary text-white py-2 px-4 rounded-full hover:bg-[#8a528d]
 							 transition-base font-semibold'
 						>
-							Ubah Profil
+							Ubah Foto Profil
 						</button>
 					)
 				) : (

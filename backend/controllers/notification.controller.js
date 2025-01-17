@@ -39,7 +39,7 @@ export const deleteNotification = async (req, res) => {
 			recipient: req.user._id,
 		});
 
-		res.json({ message: "Notification deleted successfully" });
+		res.json({ message: "Notifikasi berhasil dihapus" });
 	} catch (error) {
 		res.status(500).json({ message: "Server error" });
 	}

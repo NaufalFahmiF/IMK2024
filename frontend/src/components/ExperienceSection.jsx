@@ -29,6 +29,8 @@ const ExperienceSection = ({ userData, isOwnProfile, onSave }) => {
 				description: "",
 				currentlyWorking: false,
 			});
+
+			toast.success("Pengalaman berhasil ditambahkan");
 		}
 
 		const { title, company, startDate, endDate, description, currentlyWorking } = newExperience;
@@ -91,7 +93,7 @@ const ExperienceSection = ({ userData, isOwnProfile, onSave }) => {
 							<h3 className='font-semibold'>{exp.title}</h3>
 							<p className='text-gray-600'>{exp.company}</p>
 							<p className='text-gray-500 text-sm'>
-								{formatDate(exp.startDate)} - {exp.endDate ? formatDate(exp.endDate) : "Present"}
+								{formatDate(exp.startDate)} - {exp.endDate ? formatDate(exp.endDate) : "Sekarang"}
 							</p>
 							<p className='text-gray-700'>{exp.description}</p>
 						</div>
@@ -140,8 +142,9 @@ const ExperienceSection = ({ userData, isOwnProfile, onSave }) => {
 						/>
 						<label htmlFor='currentlyWorking' className='mb-3'>Saat ini saya bekerja di sini </label>
 					</div>
-					<span className="text-md font-medium">Tanggal Berakhir</span>
 					{!newExperience.currentlyWorking && (
+						<>
+						<span className="text-md font-medium">Tanggal Berakhir</span>
 						<input
 							type='date'
 							placeholder='Tanggal berakhir'
@@ -149,6 +152,7 @@ const ExperienceSection = ({ userData, isOwnProfile, onSave }) => {
 							onChange={(e) => setNewExperience({ ...newExperience, endDate: e.target.value })}
 							className='w-full mt-2 mb-3 p-2 border rounded-md focus:outline-none focus:border-[#B369B5] focus:ring-2 focus:ring-[#B369B5]'
 						/>
+						</>
 					)}
 					<span className="text-md font-medium">Deskripsi</span>
 					<textarea

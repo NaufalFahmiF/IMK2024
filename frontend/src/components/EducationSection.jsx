@@ -22,6 +22,7 @@ const EducationSection = ({ userData, isOwnProfile, onSave }) => {
 				startYear: "",
 				endYear: "",
 			});
+			toast.success("Pendidikan berhasil ditambahkan");
 		}
 
 		const { school, fieldOfStudy, startYear, endYear } = newEducation;
@@ -74,7 +75,7 @@ const EducationSection = ({ userData, isOwnProfile, onSave }) => {
 							<h3 className='font-semibold'>{edu.fieldOfStudy}</h3>
 							<p className='text-gray-600'>{edu.school}</p>
 							<p className='text-gray-500 text-sm'>
-								{edu.startYear} - {edu.endYear || "Present"}
+								{edu.startYear} - {edu.endYear || "Sekarang"}
 							</p>
 						</div>
 					</div>

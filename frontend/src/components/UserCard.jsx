@@ -13,7 +13,7 @@ function UserCard({ user, isConnection }) {
 			</Link>
 			<p className='text-gray-600 text-center'>{user.headline}</p>
 			<p className='text-sm text-gray-500 mt-2'>{user.connections?.length} Koneksi</p>
-			<button className='mt-4 bg-primary text-white px-4 py-2 rounded-md hover:bg-primary-dark transition-colors w-full'>
+			<button className='mt-4 bg-primary text-white px-4 py-2 font-medium rounded-md hover:bg-primary-dark transition-colors w-full'>
 				{isConnection ? "Terkoneksi" : "Hubungkan"}
 			</button>
 		</div>

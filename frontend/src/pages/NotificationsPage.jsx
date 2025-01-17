@@ -5,6 +5,7 @@ import { ExternalLink, Eye, MessageSquare, ThumbsUp, Trash2, UserPlus } from "lu
 import { Link } from "react-router-dom";
 import Sidebar from "../components/Sidebar";
 import { formatDistanceToNow } from "date-fns";
+import { id } from 'date-fns/locale';
 
 const NotificationsPage = () => {
 	const { data: authUser } = useQuery({ queryKey: ["authUser"] });
@@ -27,19 +28,18 @@ const NotificationsPage = () => {
 		mutationFn: (id) => axiosInstance.delete(`/notifications/${id}`),
 		onSuccess: () => {
 			queryClient.invalidateQueries(["notifications"]);
-			toast.success("Notification deleted");
+			toast.success("Notifikasi berhasil dihapus");
 		},
 	});
 
 	const renderNotificationIcon = (type) => {
 		switch (type) {
 			case "like":
-				return <ThumbsUp className='text-blue-500' />;
-
+				return <ThumbsUp className='text-primary' />;
 			case "comment":
-				return <MessageSquare className='text-green-500' />;
+				return <MessageSquare className='text-primary' />;
 			case "connectionAccepted":
-				return <UserPlus className='text-purple-500' />;
+				return <UserPlus className='text-primary' />;
 			default:
 				return null;
 		}
@@ -133,9 +133,7 @@ const NotificationsPage = () => {
 													<p className='text-sm'>{renderNotificationContent(notification)}</p>
 												</div>
 												<p className='text-xs text-gray-500 mt-1'>
-													{formatDistanceToNow(new Date(notification.createdAt), {
-														addSuffix: true,
-													})}
+													{formatDistanceToNow(new Date(notification.createdAt), { addSuffix: true, locale: id })}
 												</p>
 												{renderRelatedPost(notification.relatedPost)}
 											</div>

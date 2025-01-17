@@ -33,7 +33,7 @@ export const sendConnectionRequest = async (req, res) => {
 
 		await newRequest.save();
 
-		res.status(201).json({ message: "Connection request sent successfully" });
+		res.status(201).json({ message: "Permintaan koneksi berhasil dikirim" });
 	} catch (error) {
 		res.status(500).json({ message: "Server error" });
 	}
@@ -112,7 +112,7 @@ export const rejectConnectionRequest = async (req, res) => {
 		request.status = "rejected";
 		await request.save();
 
-		res.json({ message: "Connection request rejected" });
+		res.json({ message: "Permintaan koneksi ditolak" });
 	} catch (error) {
 		console.error("Error in rejectConnectionRequest controller:", error);
 		res.status(500).json({ message: "Server error" });

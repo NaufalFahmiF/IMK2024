@@ -12,6 +12,7 @@ const SkillsSection = ({ userData, isOwnProfile, onSave }) => {
 		if (newSkill && !skills.includes(newSkill)) {
 			setSkills([...skills, newSkill]);
 			setNewSkill("");
+			toast.success("Kemampuan berhasil ditambahkan");
 		}
 
 		if (!newSkill.trim()) {
@@ -78,7 +79,7 @@ const SkillsSection = ({ userData, isOwnProfile, onSave }) => {
 						onClick={handleAddSkill}
 						className='bg-primary text-white py-2 px-4 rounded-r hover:bg-[#8a528d] transition-base font-medium'
 					>
-						Tambahkan skill
+						Tambahkan kemampuan
 					</button>
 				</div>
 			)}
