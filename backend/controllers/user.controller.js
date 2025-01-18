@@ -80,3 +80,41 @@ export const updateProfile = async (req, res) => {
 		res.status(500).json({ message: "Server error" });
 	}
 };
+
+export const searchProfile = async (req, res) => {
+	const { query } = req.query;
+
+	try {
+		if (!query || query.trim() === "'") {
+			return res.status(200).json({
+			  status: "success",
+			  message: "Query is empty, returning empty data",
+			  results: []
+			});
+		  }
+		
+		const users = await User.find({
+			$or: [
+				{ name: { $regex: query, $options: "i" } },
+				{ username: { $regex: query, $options: "i" } }
+			]
+		}).select("name username email profilePicture headline");
+
+		if(users.length === 0) {
+			return res.status(200).json({
+				status: "success",
+				message: "No Users not Found",
+				results: [],
+			});
+		}
+		
+		return res.status(200).json({
+			status: "success",
+			message: "Users Found",
+			results: users,
+		});
+	} catch (error) {
+		console.error('error in search profile ; ',error);
+		return res.status(500).json({message: 'server error'});		
+	}
+}

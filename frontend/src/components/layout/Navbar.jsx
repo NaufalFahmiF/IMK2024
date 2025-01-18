@@ -1,13 +1,31 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { axiosInstance } from "../../lib/axios";
 import { Link, useNavigate } from "react-router-dom";
-import { Bell, Home, LogOut, User, Users } from "lucide-react";
+import { Bell, Home, LogOut, User, Users, Search, X } from "lucide-react";
 import toast from "react-hot-toast";
+import UserList from "../UserList";
+import { useEffect, useRef, useState } from "react";
 
 const Navbar = () => {
+	const [textQuery, setTextQuery] = useState("");
+	const [showSuggestions, setShowSuggestions] = useState(false);
+  
+	const inputRef = useRef(null);
+	const dropdownRef = useRef(null);
+
 	const navigate = useNavigate();
 	const { data: authUser } = useQuery({ queryKey: ["authUser"] });
 	const queryClient = useQueryClient();
+
+	const { data: searchResults, isLoading: isSearching } = useQuery({
+		queryKey: ['searchQuery', textQuery], 
+		queryFn: async () => {
+		  if (!textQuery) return { results: [] }; 
+		  const res = await axiosInstance.get(`/users/search?query=${textQuery}`);
+		  return res.data;
+		},
+		enabled: !!textQuery,
+	});
 
 	const { data: notifications } = useQuery({
 		queryKey: ["notifications"],
@@ -30,6 +48,41 @@ const Navbar = () => {
 		},
 	});
 
+	const handleInputChange = (e) => {
+		setTextQuery(e.target.value);
+		if (e.target.value === '') {
+		  setShowSuggestions(false);
+		} else {
+		  setShowSuggestions(true);
+		}
+	};
+	
+	const handleSuggestionRemove = () => {
+		setTextQuery('');
+		setShowSuggestions(false); 
+	};
+	
+	useEffect(() => {
+		const handleClickOutside = (event) => {
+		  if (
+			dropdownRef.current &&
+			!dropdownRef.current.contains(event.target) &&
+			inputRef.current &&
+			!inputRef.current.contains(event.target)
+		  ) {
+			setShowSuggestions(false); 
+		  }
+	};
+	
+	// Adding the click event listener
+	document.addEventListener("click", handleClickOutside);
+	
+	// Cleaning up the event listener on unmount
+	return () => {
+		document.removeEventListener("click", handleClickOutside);
+	};
+	}, []);
+
 	const unreadNotificationCount = notifications?.data.filter((notif) => !notif.read).length;
 	const unreadConnectionRequestsCount = connectionRequests?.data?.length;
 
@@ -41,6 +94,38 @@ const Navbar = () => {
 						<Link to='/'>
 							<img className='h-8 rounded' src='/ugcorner.png' alt='LinkedIn' />
 						</Link>
+					</div>
+					<div className='sm: hidden md:hidden lg:hidden xl:hidden 2xl:hidden items-center gap-4'>
+						
+					</div>
+					<div className='sm: hidden md:flex items-center gap-4'>
+						<Search size={20}/>
+						<span className='text-xs hidden md:block'>Search</span>
+						<input 
+							ref={inputRef}
+							type="text"
+							className="appearance-none bg-transparent border-b border-teal-400 w-44 text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
+							value={textQuery}
+							onChange={handleInputChange} 
+							placeholder="Search Users..."/>
+
+						{textQuery && (
+							<X size={20} strokeWidth={2.25} onClick={handleSuggestionRemove} className="cursor-pointer"/>
+						)}
+
+
+						{showSuggestions && textQuery && (
+							<ul ref={dropdownRef} className="flex flex-col bg-white rounded-lg w-60 absolute top-16 ml-20 z-10 shadow-xl">
+								{isSearching ? (
+									<li className="text-center">Loading...</li>
+								) :(
+									<UserList User={searchResults.results} handleSuggestionRemove={handleSuggestionRemove}/>
+								)}
+								{searchResults?.results?.length === 0 && !isSearching && (
+									<li className="p-2 text-center text-gray-500">No results found</li>
+								)}
+							</ul>
+						)}
 					</div>
 					<div className='flex items-center gap-2 md:gap-6'>
 						{authUser ? (
