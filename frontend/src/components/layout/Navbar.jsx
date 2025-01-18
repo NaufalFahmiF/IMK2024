@@ -117,35 +117,6 @@ const Navbar = () => {
 							<Search size={20} className="absolute inset-y-0 my-auto h-8 w-12 px-3.5 stroke-gray-500 border-r border-transparent peer-focus:border-[#763996] peer-focus:stroke-[#763996]"/>
 						</div>
 					</div>
-					{/* <div className='sm: hidden md:flex items-center gap-4'>
-						<Search size={20}/>
-						<span className='text-xs hidden md:block'>Search</span>
-						<input 
-							ref={inputRef}
-							type="text"
-							className="appearance-none bg-transparent border-b border-teal-400 w-44 text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
-							value={textQuery}
-							onChange={handleInputChange} 
-							placeholder="Search Users..."/>
-
-						{textQuery && (
-							<X size={20} strokeWidth={2.25} onClick={handleSuggestionRemove} className="cursor-pointer"/>
-						)}
-
-
-						{showSuggestions && textQuery && (
-							<ul ref={dropdownRef} className="flex flex-col bg-white rounded-lg w-60 absolute top-16 ml-20 z-10 shadow-xl">
-								{isSearching ? (
-									<li className="text-center">Loading...</li>
-								) :(
-									<UserList User={searchResults.results} handleSuggestionRemove={handleSuggestionRemove}/>
-								)}
-								{searchResults?.results?.length === 0 && !isSearching && (
-									<li className="p-2 text-center text-gray-500">No results found</li>
-								)}
-							</ul>
-						)}
-					</div> */}
 					<div className='flex items-center gap-2 md:gap-6'>
 						{authUser ? (
 							<>

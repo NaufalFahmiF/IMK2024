@@ -2,14 +2,15 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
 import { axiosInstance } from "../../lib/axios";
 import toast from "react-hot-toast";
-import { Loader } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { Loader, Eye, EyeOff } from "lucide-react";
 
 const SignUpForm = () => {
 	const [name, setName] = useState("");
 	const [email, setEmail] = useState("");
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+
+    const [showPassword, setShowPassword] = useState(false);
 
     const queryClient = useQueryClient();
 
@@ -22,7 +23,6 @@ const SignUpForm = () => {
         onSuccess: () => {
 			toast.success("Akun berhasil dibuat");
             queryClient.invalidateQueries({ queryKey: ["authUser"] });
-            Navigate('/');
         },
         onError: (err) => {
             toast.error(err.response.data.message || "Terjadi kesalahan");
@@ -65,13 +65,20 @@ const SignUpForm = () => {
             />
 			<span className="text-md font-medium">Password</span>
             <input
-                type='password'
+                type={showPassword ? 'text' : 'password'}
                 placeholder='Masukkan Password Anda'
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 className='w-full mt-2 p-2 border mb-1 border-gray-300 rounded-md focus:outline-none focus:border-[#B369B5] focus:ring-2 focus:ring-[#B369B5]'
                 required
             />
+            <button
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+                className="absolute right-16 -translate-y-8 flex items-center text-gray-500"
+            >
+                {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
+            </button>
             <div className="py-1 text-gray-400 text-sm font-regular">
                 Petunjuk: 
             </div>
