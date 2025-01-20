@@ -28,11 +28,11 @@ const SignInPage = () => {
                     />
                     <span className="mb-3 text-4xl font-bold">Masuk</span>
                     <span className="font-regular text-gray-400 mb-8">
-                        Masuk dengan akun StudentSite
+                        Masuk dengan akun UGCorner
                     </span>
                     <SignInForm />
                     <Link to='/signup' className="text-[#B369B5] text-center font-bold w-full border-none text-md p-2 mb-6 hover:text-[#8a528d] underline transition-all ease-in duration-300">
-                        Aktivasi
+                        Daftar
                     </Link>
                 </div>
             </div>

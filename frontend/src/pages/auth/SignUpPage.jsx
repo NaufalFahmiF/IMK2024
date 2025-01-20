@@ -26,9 +26,9 @@ const SignInPage = () => {
                         alt="Logo Universitas"
                         className="absolute top-4 right-4 w-14 h-14"
                     />
-                    <span className="mb-3 text-4xl font-bold">Aktivasi</span>
+                    <span className="mb-3 text-4xl font-bold">Daftar</span>
                     <span className="font-regular text-gray-400 mb-8">
-                        Aktivasi Menggunakan StudentSite
+                        Silakan daftar untuk membuat akun baru
                     </span>
                     <SignUpForm />
                     <Link to='/signin' className="text-[#B369B5] text-center font-bold w-full border-none text-md p-2 mb-6 hover:text-[#8a528d] underline transition-all ease-in duration-300">

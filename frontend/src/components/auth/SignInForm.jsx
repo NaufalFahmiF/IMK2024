@@ -59,7 +59,7 @@ const SignInForm = () => {
                 Petunjuk: 
             </div>
             <div className="mb-10 text-gray-400 text-sm font-regular">
-                Silahkan masuk dengan username dan password akun StudentSite Anda.
+                Silahkan masuk dengan username dan password akun UGCorner Anda.
             </div>
             <button type='submit' className='bg-[#B369B5] w-full font-bold text-white p-2 rounded-lg hover:text-white hover:bg-[#8a528d] transition-all ease-in duration-300'>
                 {isLoading ? <Loader className='size-5 animate-spin' /> : "Masuk"}
