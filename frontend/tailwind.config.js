@@ -25,7 +25,6 @@ export default {
 					success: "#057642", // Dark Green (for success messages)
 					warning: "#F5C75D", // Yellow (for warnings)
 					error: "#CC1016", // Red (for errors)
-					"background-image": "url('frontend/public/bg1.png')"
 				},
 			},
 		],

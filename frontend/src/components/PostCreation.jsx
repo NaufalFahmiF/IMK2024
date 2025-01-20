@@ -70,7 +70,7 @@ const PostCreation = ({ user }) => {
 				<img src={user.profilePicture || "/avatar.png"} alt={user.name} className='size-12 rounded-full' />
 				<textarea
 					placeholder="Apa yang sedang Anda pikirkan?"
-					className='w-full p-3 rounded-lg bg-base-100 hover:bg-base-200 focus:bg-base-200 focus:outline-none resize-none transition-colors duration-200 min-h-[100px]'
+					className='w-full p-3 rounded-lg bg-[#fafafa] hover:bg-[#f9f3f9] focus:bg-[#f9f3f9] focus:outline-none resize-none transition-colors duration-200 min-h-[100px]'
 					value={content}
 					onChange={(e) => setContent(e.target.value)}
 				/>

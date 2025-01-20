@@ -98,10 +98,6 @@ const Navbar = () => {
 							<input type="search" ref={inputRef} value={textQuery} onChange={handleInputChange} placeholder="Cari pengguna..."
 								className="relative my-input peer z-10 bg-transparent w-12 h-12 rounded-full border cursor-pointer outline-none transition-base focus:w-60 pl-12 focus:border-[#763996] focus:cursor-text focus:pl-16 focus:pr-4"
 							/>
-							{/* ✨ doctor doctor mv out now ✨ */}
-							{/* {textQuery && (
-								<X size={20} strokeWidth={2.25} onClick={handleSuggestionRemove} className="cursor-pointer"/>
-							)} */}
 							{showSuggestions && textQuery && (
 								<ul ref={dropdownRef} className="flex flex-col bg-white rounded-lg w-60 absolute top-16 ml-15 z-10 shadow-xl">
 									{isSearching ? (

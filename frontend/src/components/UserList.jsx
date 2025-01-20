@@ -3,8 +3,7 @@ import { Link } from "react-router-dom";
 
 const UserList = ({ User, handleSuggestionRemove }) => {
   return (
-    // <li className='bg-white w-96 overflow-y-scroll max-h-96 rounded-lg shadow-md'>
-    <div className="overflow-y-scroll max-h-96">
+    <div className="overflow-y-scroll max-h-96 rounded-lg">
       {User.map((user) => (
         <Link key={user._id} to={`/profile/${user.username}`}>
           <li
@@ -18,7 +17,7 @@ const UserList = ({ User, handleSuggestionRemove }) => {
                 className="w-10 h-10 rounded-full"
               />
               <div>
-                <h3 className="text-center font-semibold">{user.name}</h3>
+                <h3 className="font-semibold">{user.name}</h3>
                 <p className="text-sm text-gray-500">{user.headline}</p>
               </div>
             </div>
