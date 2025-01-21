@@ -113,17 +113,19 @@ const SignUpForm = () => {
             >
                 {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
             </button>
-            <div className="mt-2">
-            <div className={`h-1 w-full rounde  d-md ${passwordStrength === 0 ? 'bg-gray-300' : ''} ${passwordStrength === 1 ? 'bg-red-500' : ''} ${passwordStrength === 2 ? 'bg-yellow-500' : ''} ${passwordStrength === 3 ? 'bg-blue-500' : ''} ${passwordStrength === 4 ? 'bg-green-500' : ''} ${passwordStrength >= 5 ? 'bg-green-500' : ''}`}></div>
-                <p className="text-sm text-gray-500 mt-1">
-                    {passwordStrength === 0 && "Password terlalu lemah"}
-                    {passwordStrength === 1 && "Password terlalu lemah"}
-                    {passwordStrength === 2 && "Password cukup aman"}
-                    {passwordStrength === 3 && "Password aman"}
-                    {passwordStrength === 4 && "Password sangat aman"}
-                    {passwordStrength >= 5 && "Password sangat aman"}
-                </p>
-            </div>
+            {password.length > 0 && ( 
+                <div className="mt-2">
+                <div className={`h-1 w-full rounded-md ${passwordStrength === 0 ? 'bg-gray-300' : ''} ${passwordStrength === 1 ? 'bg-red-500' : ''} ${passwordStrength === 2 ? 'bg-yellow-500' : ''} ${passwordStrength === 3 ? 'bg-blue-500' : ''} ${passwordStrength === 4 ? 'bg-green-500' : ''} ${passwordStrength >= 5 ? 'bg-green-500' : ''}`}></div>
+                    <p className="text-sm text-gray-500 mt-1">
+                        {passwordStrength === 0 && "Password terlalu lemah"}
+                        {passwordStrength === 1 && "Password terlalu lemah"}
+                        {passwordStrength === 2 && "Password cukup aman"}
+                        {passwordStrength === 3 && "Password aman"}
+                        {passwordStrength === 4 && "Password sangat aman"}
+                        {passwordStrength >= 5 && "Password sangat aman"}
+                    </p>
+                </div>
+            )}
             <button type='submit' disabled={isLoading} className='bg-[#B369B5] w-full mt-10 font-bold text-white p-2 rounded-lg hover:text-white hover:bg-[#8a528d] transition-all ease-in duration-300'>
                 {isLoading ? <Loader className='size-5 animate-spin' /> : "Daftar"}
             </button>
